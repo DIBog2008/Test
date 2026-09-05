@@ -6,12 +6,12 @@
 
 int main() {
     std :: setlocale(LC_ALL, "Russian");
-    std :: string a,b;
-    std :: cin >> a >> b;
-    if (a == b) {
-        std :: cout << "Пароль принят";
+    short a;
+    std :: cin >> a;
+    if (a >= 12) {
+        std :: cout << "Доступ разрешен";
     } else {
-        std :: cout << "Пароль не принят";
+        std :: cout << "Доступ запрещен";
     }
 
     return 0;
