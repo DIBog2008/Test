@@ -22,7 +22,8 @@ int main() {
                 std::cout << "На ноль делить нельзя!";
                 break;
             }   else {
-                std::cout << a / b;
+                double c = static_cast<double>(a) / b;
+                std::cout << c;
                 break;
             }
         default:
