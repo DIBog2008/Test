@@ -6,6 +6,7 @@
 
 int main() {
     std :: setlocale(LC_ALL, "Russian");
+    std :: cout << "Hello";
     short a;
     std :: cin >> a;
     if (a >= 12) {
