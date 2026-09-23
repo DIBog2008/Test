@@ -1,20 +1,30 @@
 #include <iostream>
 int main() {
-    int a;
-    std::cin >> a;
-    char word[a];
-    char new_word[a];
-    std::cin >> word;
-    char* ptr = word;
-    char* ptr_n = new_word;
-    while (*ptr != '\0'){
-        if (*ptr != 'h' && *ptr != 'l'){
-            *ptr_n = *ptr;
-            ptr_n++;
-        }
-        ptr++;
+    const char* messages[] = {
+    "Error: Low battery",
+    "Warning: High temperature",
+    "Success: Connected to Wi-Fi",
+    "Info: Update available",
+    "Error: Connection timeout"
+    };
+    const int size = 5;
+    int count = 0;
+    const char** ptr = messages;
+    while (count != size){
+        std:: cout << "Adress: " << ptr << " -> : text " << *ptr << '\n';
+        const char* gost = *ptr;
+        *ptr = *(ptr + (size - count));
+        *(ptr + (size - count) * 2) = gost;        
+        ptr++; 
+        count++;
     }
-    *ptr_n = '\0';
-    ptr_n = new_word;
-    std::cout << new_word << '\n';
+    count = 0;
+    ptr = messages;
+    while (count != size){
+        std:: cout << "Adress: " << ptr << " -> : text " << *ptr << '\n';
+        const char* gost = *ptr;       
+        ptr++; 
+        count++;
+    }
+
 }
