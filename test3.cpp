@@ -1,34 +1,34 @@
 #include <iostream>
-int main() {
-    const char* messages[] = {
-    "Error: Low battery",
-    "Warning: High temperature",
-    "Success: Connected to Wi-Fi",
-    "Info: Update available",
-    "Error: Connection timeout"
-    };
-    const int size = 5;
-    int count = 0;
-    const char** ptr = messages;
-    while (count != size){
-        std:: cout << "Adress: " << ptr << " -> : text " << *ptr << '\n';  
-        ptr++; 
-        count++;
+#include <cstring>
+int Factor(int a);
+int Fibo(int a);
+int main(int argc, char* argv[]) {
+    if (argc == 1 || argc > 3) {
+        std::cout << "Please -f or -d";
+    } else {
+        if (!strcmp(argv[1], "-f")){
+            int num = std::atoi(argv[2]);
+            std::cout << Factor(num) << '\n';
+        } else if (!strcmp(argv[1], "-b")){
+            int num = std::atoi(argv[2]);
+            std::cout << Fibo(num) << '\n';
+        }
     }
-    count = 0;
-    ptr = messages;
-    const char* gost = *ptr;    
-    *ptr = *(ptr + 4);
-    *(ptr + 4) = gost;
-    gost = *(ptr + 3);
-    *(ptr + 1) = *(ptr + 3);
-    count = 0;
-    ptr = messages;
-    while (count != size){
-        std:: cout << "Adress: " << ptr << " -> : text " << *ptr << '\n';
-        const char* gost = *ptr;       
-        ptr++; 
-        count++;
+}
+int Factor(int a){
+    int b = 1, c = 1;
+    while(b <= a){
+        c = c * b;
+        b++;
     }
-
+    return c;
+}
+int Fibo(int a){
+    if (a == 0){
+        return 0;
+    } else if(a == 1){
+        return 1;
+    } else {
+        return Fibo(a - 1) + Fibo(a - 2);
+    }
 }
